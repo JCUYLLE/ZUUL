@@ -37,12 +37,15 @@ public class Player {
         return false;
     }
 
-    public boolean take(Item item) {
-        if (currentRoom.hasItem(item.getName())) {
+    public boolean take(String itemName) {
+        if (currentRoom.hasItem(itemName)) {
+            Item item = currentRoom.getItem(itemName);
             if (getCurrentWeight()+ item.getWeight()<=maxWeight){
-            items.add(currentRoom.getItem(item.getName()));
-            return true;}
+                items.add(item);
+                return true;
+            }
             else System.out.println("Your backpack is full");
+            currentRoom.addItem(item);
         }
         return false;
     }

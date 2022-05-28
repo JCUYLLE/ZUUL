@@ -53,7 +53,7 @@ public class Game {
         kleedKamer = new Room("room where docters change costumes into scrubs");
         spoedgevallen = new Room("room where urgent cases can be investigated ");
         apotheek = new Room("Room where all the meds are kept");
-        helipad = new Room("The top-level heli-pad");
+        helipad = new Room("top-level heli-pad");
         operatieKamer = new Room("operation room");
         labo = new Room("room where samples of body-fluids are examinated");
         mortuarium = new Room("the room where you'll end up if Mer doesn't do her job");
@@ -317,21 +317,20 @@ public class Game {
             System.out.println("Your Patient is healed, up to the next one");
     }
 
-    private void take(Command command) {
+    private void take(Command command){
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know what to take...
             System.out.println("Take what?");
             return;
         }
         String itemName = command.getSecondWord();
-        Item item = player.getCurrentRoom().getItem(itemName);
-        if (player.take(item)) {
+        if (player.take(itemName)) {
             printLocationInfo();
         } else {
             System.out.println("There is no item here with the name " + itemName);
-            player.getCurrentRoom().addItem(item);
         }
     }
+
     private void home(){
     player.setCurrentRoom(hoofdingang);
      printLocationInfo();
