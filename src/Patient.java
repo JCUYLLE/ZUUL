@@ -1,4 +1,14 @@
-import java.util.Random;
+/**
+ * This class is part of the "World of Zuul" application.
+ * "World of Zuul" is a very simple, text based adventure game.
+ * <p>
+ * This class creates obj from the class Patient
+ * Checks the health and if max health has been reached or not.
+ *
+ * @author Jolynn Cuylle
+ * @version 2022.05.29
+ */
+
 
 public class Patient {
     private final String name;

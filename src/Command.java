@@ -13,8 +13,8 @@
  *
  * If the command had only one word, then the second word is <null>.
  *
- * @author  Michael Kölling and David J. Barnes
- * @version 2011.07.31
+ *  @author Jolynn Cuylle
+ *  @version 2022.05.29
  */
 
 public class Command
@@ -52,14 +52,6 @@ public class Command
     public String getSecondWord()
     {
         return secondWord;
-    }
-
-    /**
-     * @return true if this command was not understood.
-     */
-    public boolean isUnknown()
-    {
-        return (commandWord == CommandWord.UNKNOWN);
     }
 
     /**

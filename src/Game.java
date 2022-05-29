@@ -13,8 +13,8 @@ import java.util.ArrayList;
  * rooms, creates the parser and starts the game.  It also evaluates and
  * executes the commands that the parser returns.
  *
- * @author Michael Kölling and David J. Barnes
- * @version 2011.07.31
+ *  @author Jolynn Cuylle
+ *  * @version 2022.05.29
  */
 
 public class Game {
@@ -156,7 +156,9 @@ public class Game {
         System.out.println();
         printLocationInfo();
     }
-
+    /**
+     //Print out the location info for the player.
+     */
     private void printLocationInfo() {
         int counter = 0;
         System.out.println(player.getCurrentRoom().getLongDescription());
@@ -227,11 +229,15 @@ public class Game {
         System.out.println("Possible command words are:   " + parser.showCommands());
         System.out.println();
     }
-
+    /**
+     //Checks in what room we are and gives us the long description
+     */
     private void look() {
         System.out.println(player.getCurrentRoom().getLongDescription());
     }
-
+    /**
+     //we can eat a cooky to enlarge our backpack and eat somthing
+     */
     private void eat(Command command) {
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
@@ -241,7 +247,7 @@ public class Game {
         if (command.getSecondWord().equals("Cooky")) {
             player.setMaxWeight(15);
 
-            System.out.println("Je hebt nu gegeten en bent niet meer hongerig\n");
+            System.out.println("You have eaten a cooky and are no longer hungry\n");
             System.out.println("Your backpack has enlarged! Go back for more items!");
         }
     }
@@ -267,9 +273,12 @@ public class Game {
             player.setCurrentRoom(nextRoom);
             printLocationInfo();
             checkRoomColleague(nextRoom);
+            checkRoomPatient(nextRoom);
         }
     }
-    //kijken of in deze kamer een persoon staat waar we tegen kunnen spreken
+    /**
+    //Check if there is colleague in the room that has something to say
+    */
     private void checkRoomColleague(Room room){
         if(room.equals(operatieKamer))
             talkToColleague(Christina);
@@ -278,7 +287,9 @@ public class Game {
         if(room.equals(inkomhal))
             talkToColleague(Richard);
     }
-
+    /**
+     //Check if there is Patient in the room that we can cure
+     */
     private void checkRoomPatient(Room zieke){
         if(zieke.equals(operatieKamer))
             healPatient(p1,siringe, medicine );
@@ -293,7 +304,9 @@ public class Game {
         if(zieke.equals(doktersKabinetten))
             healPatient(p6,siringe, medicine);
     }
-
+    /**
+     //trugger the colleague to talk to you
+     */
     private void talkToColleague(Colleague person){
         if(!person.isSpokenToo()){
             System.out.println("Meredith is asking for your help, would you like to help her with all of the patients?");
@@ -302,7 +315,9 @@ public class Game {
         }
 
     }
-
+    /**
+     //if there is a patient we heal them by entering the room, if we have the needed medicine
+     */
     private void healPatient(Patient person, Item item1, Item item2){
         if (!person.isHealed()){
             System.out.println("Heal this person as soon as possible....look at its health " + person.getHealth() );
@@ -316,7 +331,9 @@ public class Game {
         if (person.isHealed())
             System.out.println("Your Patient is healed, up to the next one");
     }
-
+    /**
+     //Checks if we want to take something and if the new weight isn't more than the maxweight. If not you take it.
+     */
     private void take(Command command){
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know what to take...
@@ -330,13 +347,17 @@ public class Game {
             System.out.println("There is no item here with the name " + itemName);
         }
     }
-
+    /**
+     //Transports you right back to the beginning location, the home position
+     */
     private void home(){
     player.setCurrentRoom(hoofdingang);
      printLocationInfo();
     }
 
-
+    /**
+     //Check if we have something in our backpack and if yes we drop it in that room
+     */
     private void drop(Command command) {
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know what to drop...
