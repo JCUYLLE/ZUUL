@@ -12,14 +12,15 @@
 
 public class Patient {
     private final String name;
-    private int health;
+    public int health;
     private boolean healed = false;
-    private final Room currentRoom;
+    private Room currentRoom;
     private int currentHealth;
 
     public Patient(String name, Room currentRoom, int health){
         this.name = name;
         this.currentRoom = currentRoom;
+        this.health = health;
         this.healed = false;
 
     }
@@ -35,7 +36,7 @@ public class Patient {
     }
 
     public void setHealth(int health) {
-        this.health = health;
+        health += currentHealth;
     }
 
     public boolean isHealed() {
@@ -47,6 +48,12 @@ public class Patient {
     public Room getCurrentRoom() {
         return currentRoom;
     }
-    public int getCurrentHealth() {return currentHealth;}
-    public void setCurrentHealth(int currentHealth) {this.currentHealth = currentHealth;}
+
+    public int getCurrentHealth() {
+        return health;
+    }
+
+    public void setCurrentHealth(int currentHealth) {
+        this.currentHealth = currentHealth;
+    }
 }

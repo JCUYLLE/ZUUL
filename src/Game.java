@@ -210,6 +210,9 @@ public class Game {
             case HOME:
                 home();
                 break;
+            case HEALTHCHECK:
+                checkHealth(command);
+                break;
         }
 
         return wantToQuit;
@@ -251,6 +254,16 @@ public class Game {
             System.out.println("Your backpack has enlarged! Go back for more items!");
         }
     }
+
+    private void checkHealth(Command command){
+        System.out.println("Name Patient:   " + p1.getName() + "  Health :" + p1.getCurrentHealth());
+        System.out.println("Name Patient:   " + p2.getName() + "  Health :" + p2.getCurrentHealth());
+        System.out.println("Name Patient:   " + p3.getName() + "  Health :" + p3.getCurrentHealth());
+        System.out.println("Name Patient:   " + p4.getName() + "  Health :" + p4.getCurrentHealth());
+        System.out.println("Name Patient:   " + p5.getName() + "  Health :" + p5.getCurrentHealth());
+        System.out.println("Name Patient:   " + p6.getName() + "  Health :" + p6.getCurrentHealth());
+    }
+
     /**
      * Try to go in one direction. If there is an exit, enter
      * the new room, otherwise print an error message.
@@ -320,11 +333,11 @@ public class Game {
      */
     private void healPatient(Patient person, Item item1, Item item2){
         if (!person.isHealed()){
-            System.out.println("Heal this person as soon as possible....look at its health " + person.getHealth() );
+            System.out.println("Heal this person as soon as possible....look at its health " + person.getName() +":  " );
             if (!player.inventoryCheck(item1.getName())||!player.inventoryCheck(item2.getName())){
                 if (!player.inventoryCheck(item1.getName())){
-                    person.setHealth(person.getCurrentHealth()+1);
-                }else person.setHealth(person.getCurrentHealth()+5);
+                    person.setCurrentHealth(person.getCurrentHealth()+1);
+                }else person.setCurrentHealth(person.getCurrentHealth()+5);
             }
             System.out.println(person.getCurrentHealth());
         }

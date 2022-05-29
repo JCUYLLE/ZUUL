@@ -10,7 +10,7 @@
  */
 public enum CommandWord {
     GO("Go"), LOOK("look"), TAKE("take"), DROP("drop"), EAT("eat"), QUIT("quit"),
-    HELP("?"), UNKNOWN("?"), HOME ("home");
+    HELP("?"), UNKNOWN("?"), HOME ("home"), HEALTHCHECK("health");
 
     private final String commandString;
 
